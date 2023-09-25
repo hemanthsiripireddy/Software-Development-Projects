@@ -10,24 +10,31 @@ import com.hemanth.aop.springbootaop.repository.EmpolyeeRepository;
 import com.hemanth.aop.springbootaop.service.EmployeeService;
 
 import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Slf4j
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmpolyeeRepository employeeRepository;
 
 	@Override
 	public void addEmployee(Employee employee) {
 		// TODO Auto-generated method stub
-		employeeRepository.saveAndFlush(employee);
-		
+		employeeRepository.save(employee);
+
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) {
 		// TODO Auto-generated method stub
-		employeeRepository.saveAndFlush(employee);
-		
+		// employeeRepository.
+		boolean exist = employeeRepository.existsById(employee.getId());
+		if (exist)
+			employeeRepository.saveAndFlush(employee);
+		else {
+			throw new RuntimeException("there is no employee with id " + employee.getId());
+		}
+
 	}
 
 	@Override
@@ -40,7 +47,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public void deleteEmployeeById(int id) {
 		// TODO Auto-generated method stub
 		employeeRepository.deleteById(id);
-		
+
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.hemanth.aop.springbootaop;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,12 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@ComponentScan("com.hemanth.aop.springbootaop.*")
+@ComponentScan("com.example.*")
 @EnableSwagger2
-public class SpringbootaopApplication {
+public class EntertainmentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootaopApplication.class, args);
+		// TODO Auto-generated method stub
+		SpringApplication.run(EntertainmentApplication.class, args);
+
 	}
 
 }
